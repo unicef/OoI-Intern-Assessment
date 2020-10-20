@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Wallet 1",
+    "address": "0x0000000000000000000000000000000000000000",
+    "currency": "Ethereum",
+    "balance": 1000e18
+  },
+  {
+    "name": "Wallet 2",
+    "address": "0x0000000000000000000000000000000000000001",
+    "currency": "Bitcoin",
+    "balance": 100e18
+  }
+]
