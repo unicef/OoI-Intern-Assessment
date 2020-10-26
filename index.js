@@ -4,6 +4,9 @@ const { Logger } = require("node-core-utils");
 const { walletAPI } = require("./api");
 const defaultConfig = require("./config");
 const walletData = require("./config/wallets");
+const newWallet = require("./client/src/actions/addWallet");
+const editWallet = require("./client/src/actions/editWallet");
+const removeWallet = require("./client/src/actions/removeWallet");
 
 class App {
   constructor(config) {
@@ -43,6 +46,9 @@ class App {
   }
 
   logRequest(req, res, next) {
+    let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const logReqest = { "Request Path": req.url, "User IP Address": ip };
+    this.logger.info(logReqest);
     next();
   }
 
@@ -50,6 +56,18 @@ class App {
     return new Promise((resolve) => {
       resolve(this.walletData);
     });
+  }
+
+  addWallet() {
+    return this.walletData.push(newWallet);
+  }
+
+  updateWallet() {
+    return editWallet;
+  }
+
+  deleteWallet() {
+    return removeWallet;
   }
 }
 
