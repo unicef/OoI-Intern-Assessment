@@ -1,56 +1,43 @@
 # UNICEF Office of Innovation Blockchain Team Intern Assessment
 
-It is not required to complete every part of this assessment. Go as far as you can in the allotted time.
+Go as far as you can in the allotted time.
 
 1. Fork the repository
 2. Clone your forked repository
 3. `npm install && cd client; npm install`
-4. Create a new branch `unicef-assesment`
+4. Create a new branch `fullstack-assesment`
 5. To start the server: `node index.js`
 6. To start the client: `cd client; npm run start`
 
-## Front End
+## Database
 
-1. Create a new Molecule - WalletCard.jsx
-2. Add your WalletCard component to the Wallets template
-3. Add one WalletCard for each wallet of the ‘wallets’ prop.
-4. Display all of the wallet properties on your WalletCard
-   1. Use react material components or existing atoms/molecules.
-   2. Properly format amounts for ETH/BTC.
-   3. Display & format USD amounts using the `rate` prop.
-5. Filter the wallets array on the Wallets page to display only the Ethereum wallets on the Ethereum tab and Bitcoin on the Bitcoin tab.
-6. Create a form to add/edit wallets.
-7. Add an ‘Add New Wallet’ button to the Wallets Template
-8. Create three new actions:
-   1. addWallet.js
-      Using fetch, POST the new data to the backend
-   2. editWallet.js
-      Using fetch, PUT the updated data to the backend
-   3. removeWallet.js
-      Using fetch, DELETE wallet data from the backend
-9. Add ‘Edit Wallet’ & ‘Remove Wallet’ buttons to your WalletCard
-10. Wire up your new actions.
-
-### Expected Results:
-
-1. WalletCards are displayed on page when the app opens
-2. Add/Remove/Edit Wallets
-3. WalletCards update as the Wallet details change on the backend.
+1. Create the new database model in /lib/db/models
+   1. Decide on your own, sensible, properties.
+2. Wire your model into the db and application.
 
 ## Back End
 
-1. Complete the `logRequest` middleware to log each request path and the user’s ip address.
-   1. Use the existing Logger library
-   2. Create a new logger object named ‘logReqest’
-   3. Log to the `info` transport
-2. Add new endpoints to the `/wallets` route for POST, PUT and DELETE
-3. Create three new application methods:
-   1. addWallet
-   2. updateWallet
-   3. deleteWallet
-4. Wire up your endpoints to the application.
-5. Make the unit tests pass when you run `npm run test`
-6. Add additional unit tests for the edge cases in your new code.
+1. Add a new route to the API for users.
+   1. Look in /lib/api
+   2. Complete PUT, POST, and GET endpoints
+2. Complete the `logRequest` middleware
+   1. Log each request path.
+   2. Log the user’s ip address
+3. Add a new property to the application
+   1. startTime - timestamp when the server started
+4. Modify the `getStatus` function
+   1. Add uptime - amount of time the server has been running
+   1. Add the running applications current configuration
+
+## Front End
+
+1. Create a login/registration form.
+2. Register a new user.
+3. Login as the user.
+   1. Display and style the server status if the user successfully logs in.
+   2. Display an error page if unsuccessful.
+
+[Note the usage of 'proxy' in the client package.json](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
 
 ## Submission
 
