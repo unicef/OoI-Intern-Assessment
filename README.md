@@ -1,4 +1,4 @@
-# UNICEF Office of Innovation Blockchain Team Intern Assessment
+# UNICEF Office of Innovation Intern Assessment
 
 Go as far as you can in the allotted time.
 
@@ -9,11 +9,15 @@ Go as far as you can in the allotted time.
 5. To start the server: `node index.js`
 6. To start the client: `cd client; npm run start`
 
-## Database
+## Front End
 
-1. Create the new database model in /lib/db/models
-   1. Decide on your own, sensible, properties.
-2. Wire your model into the db and application.
+1. Create a login/registration form.
+2. Register a new user.
+3. Login as the user.
+   1. Display and style the server status if the user successfully logs in.
+   2. Display an error page if unsuccessful.
+
+[Note the usage of 'proxy' in the client package.json](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
 
 ## Back End
 
@@ -29,15 +33,11 @@ Go as far as you can in the allotted time.
    1. Add uptime - amount of time the server has been running
    1. Add the running applications current configuration
 
-## Front End
+## Database
 
-1. Create a login/registration form.
-2. Register a new user.
-3. Login as the user.
-   1. Display and style the server status if the user successfully logs in.
-   2. Display an error page if unsuccessful.
-
-[Note the usage of 'proxy' in the client package.json](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
+1. Create the new database model in /lib/db/models
+   1. Decide on your own, sensible, properties.
+2. Wire your model into the db and application.
 
 ## Submission
 
