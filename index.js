@@ -1,16 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { Logger } = require("node-core-utils");
-const { walletAPI } = require("./api");
 const defaultConfig = require("./config");
-const walletData = require("./config/wallets");
+const { MongoDB } = require("./lib/db");
+const { logRequest } = require("./lib/middleware");
+const { API } = require("./lib/api");
 
 class App {
   constructor(config) {
     this.config = { ...defaultConfig, ...config };
     this.logger = new Logger("Intern Assessment");
     this.logger.info(`Starting...`);
-    this.walletData = walletData;
+    this.logRequest = logRequest;
+    this.db = new MongoDB(this.config.db);
+
     this.init();
   }
   init() {
@@ -25,7 +28,7 @@ class App {
     this.server.use(bodyParser.json({ limit: this.config.uploadLimit }));
     this.server.set("app", this);
     this.server.use("/api", this.logRequest);
-    this.server.use("/api/wallets", walletAPI);
+    this.server.use("/api", API);
 
     this.logger.info(`Initialized`);
   }
@@ -42,14 +45,8 @@ class App {
     process.exit();
   }
 
-  logRequest(req, res, next) {
-    next();
-  }
-
-  getWallets() {
-    return new Promise((resolve) => {
-      resolve(this.walletData);
-    });
+  async getStatus() {
+    return await this.db.models.Example.countDocuments();
   }
 }
 
