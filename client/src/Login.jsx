@@ -53,7 +53,13 @@ export default function Login() {
             },
             body: JSON.stringify(data),
         })
-            .then(response => response.json())
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
             .then(data => {
                 alert("Login successful");
                 // allow sometime to show the notification
