@@ -13,6 +13,7 @@ const {
 const {
     API
 } = require("./lib/api");
+var cors = require('cors')
 class App {
     constructor(config) {
         this.config = {
@@ -35,6 +36,7 @@ class App {
         this.server = express();
         this.server.set("trust_proxy", this.config.trustProxy);
         this.server.set("json spaces", this.config.jsonSpaces);
+        this.server.use(cors());
         this.server.use(bodyParser.urlencoded(this.config.urlencoded));
         this.server.use(bodyParser.json({
             limit: this.config.uploadLimit
