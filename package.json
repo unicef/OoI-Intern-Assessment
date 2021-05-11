@@ -5,7 +5,10 @@
         "body-parser": "^1.19.0",
         "dotenv": "^9.0.2",
         "express": "^4.17.1",
+        "express-session": "^1.17.1",
         "node-core-utils": "git+https://github.com/unicef/node-core-utils.git",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
         "web3": "^1.2.8"
     },
     "devDependencies": {

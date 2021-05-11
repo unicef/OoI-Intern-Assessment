@@ -13,7 +13,6 @@ const {
 const {
     API
 } = require("./lib/api");
-
 class App {
     constructor(config) {
         this.config = {
