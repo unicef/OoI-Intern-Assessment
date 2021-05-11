@@ -52,7 +52,7 @@ class App {
             this.logger.info(`listening on http://localhost:${this.config.port}`);
         });
         this.logger.info(`started in ${this.environment}.`);
-        this.startTimeString = new Date(Date.now())
+        this.startTimeString = Date.now()
     }
 
     async exit() {
@@ -61,7 +61,12 @@ class App {
     }
 
     async getStatus() {
-        return await this.db.models.Example.countDocuments();
+        let uptime = Date.now() - this.startTimeString
+        return [await this.db.models.Example.countDocuments(), {
+                upTime: uptime
+            },
+            this.config
+        ]
     }
 
     startTime() {
@@ -72,7 +77,6 @@ class App {
 if (require.main === module) {
     const app = new App();
     app.start();
-    console.log(app.startTime())
 } else {
     module.exports = App;
 }
