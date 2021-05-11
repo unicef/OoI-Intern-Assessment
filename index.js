@@ -62,7 +62,7 @@ class App {
 
     async getStatus() {
         let uptime = Date.now() - this.startTimeString
-        return [await this.db.models.Example.countDocuments(), {
+        return [await this.db.models.User.countDocuments(), {
                 upTime: uptime
             },
             this.config
