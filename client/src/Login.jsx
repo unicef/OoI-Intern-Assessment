@@ -38,68 +38,91 @@ export default function Login() {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
+
+        const data = {
+            username: username,
+            password: password
+        };
+
+        const API_URL = process.env.REACT_APP_API_URL;
+
+        fetch(API_URL + '/api/users/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert("Login successful");
+                // allow sometime to show the notification
+                setTimeout(() => {
+                    window.location.replace("/")
+                }, 2500)
+            })
+            .catch((error) => {
+                alert("Sorry we could not log you in. Check your credentials and try again");
+            });
     }
 
     return (
-        <>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
+        <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+                <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+                Sign in
                     </Typography>
                     <form
-                        className={classes.form}
-                        noValidate
-                        onSubmit={(e) => handleSubmit(e)}
+                    className={classes.form}
+                    noValidate
+                    onSubmit={(e) => handleSubmit(e)}
+                >
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="username"
+                        label="Username"
+                        name="username"
+                        autoComplete="username"
+                        autoFocus
+                        onChange={(evt) => setUserName(evt.target.value)}
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                        onChange={(evt) => setPassword(evt.target.value)}
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
                     >
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="username"
-                            label="Username"
-                            name="username"
-                            autoComplete="username"
-                            autoFocus
-                            onChange={(evt) => setUserName(evt.target.value)}
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            onChange={(evt) => setPassword(evt.target.value)}
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            Sign In
+
+                    Sign In
                         </Button>
 
                         <Box mt={4}>
-                            <Link href="#" variant="body2">
-                                {"Don't have an account? Sign Up"}
-                            </Link>
-                        </Box>
-                    </form>
-                </div>
-            </Container>
-
-            <Backdrop />
-        </>
+                        <Link href="#" variant="body2">
+                            {"Don't have an account? Sign Up"}
+                        </Link>
+                    </Box>
+                </form>
+            </div>
+        </Container>
     );
 }
