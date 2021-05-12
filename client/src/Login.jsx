@@ -67,7 +67,7 @@ export default function Login() {
                 // allow sometime to show the notification
                 setTimeout(() => {
                     window.location.replace("/")
-                }, 1000)
+                }, 400)
             })
             .catch((error) => {
                 alert("Sorry we could not log you in. Check your credentials and try again");

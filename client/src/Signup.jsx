@@ -67,7 +67,7 @@ export default function SignUp() {
         // allow sometime to show the notification
         setTimeout(() => {
           window.location.replace("/login")
-        }, 1000)
+        }, 500)
       })
       .catch((error) => {
         alert("Sorry we could not create your account, please try again");
