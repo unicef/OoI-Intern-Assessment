@@ -61,6 +61,9 @@ export default function Login() {
             })
             .then(data => {
                 alert("Login successful");
+
+                //set a flag for login in localstorage
+                localStorage.setItem('LOGIN-STATUS', "active");
                 // allow sometime to show the notification
                 setTimeout(() => {
                     window.location.replace("/")

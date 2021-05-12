@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 
 import Login from "./Login";
 import SignUp from "./SignUp";
@@ -7,7 +7,8 @@ import LandingPage from "./LandingPage";
 
 export default function App() {
 
-  let isAuthenticated = false;
+  let isAuthenticated = localStorage.getItem("LOGIN-STATUS");
+  console.log(isAuthenticated);
 
 
   return (
