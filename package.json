@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bunyan": "^1.8.15",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
     "express": "^4.17.1",
+    "logger": "0.0.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.9",
     "node-core-utils": "git+https://github.com/unicef/node-core-utils.git",
     "web3": "^1.2.8"
   },
@@ -20,7 +26,7 @@
     "nyc": "^15.1.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "./node_modules/.bin/nyc ./node_modules/mocha/bin/mocha ./tests/**/*",
     "coverage": "./node_modules/.bin/nyc --reporter=lcov --report=text-lcov ./node_modules/mocha/bin/mocha ./tests/**/*"
   },
