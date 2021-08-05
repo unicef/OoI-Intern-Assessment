@@ -46,9 +46,7 @@ export default function SignUp() {
       password: password
     };
 
-    const API_URL = process.env.REACT_APP_API_URL;
-
-    fetch(API_URL + '/api/users/register/', {
+    fetch('/api/users/register/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
